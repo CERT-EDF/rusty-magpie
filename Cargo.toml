@@ -1,0 +1,29 @@
+[package]
+name = "rusty_magpie"
+version = "0.0.1"
+edition = "2021"
+
+[dependencies]
+anyhow = "1.0"
+log = "0.4.21"
+env_logger = { version = "0.11.8", features = ["auto-color"] }
+clap = { version = "4.5.47", features = ["cargo", "derive"] }
+yara-x = { version = "1.5.0", features = ["logging"] }
+globwalk = "0.9.1"
+crossbeam = "0.8"
+serde_json = { version = "1.0.141" }
+serde = { version = "1.0.219" }
+jwalk-meta = "0.9"
+wild = "2.2.1"
+flume = "0.11"
+glob-sl = "0.4"
+sha2 = { version = "0.10.9", default-features = true }
+base16ct = { version = "0.3.0", features = ["alloc"] }
+procfs = "0.18.0"
+
+[profile.release]
+strip = true      # Automatically strip symbols from the binary.
+opt-level = "z"   # Optimize for size.
+lto = true        # Enable link time optimization
+codegen-units = 1 # Reduce parallel code generation units
+panic = "abort"
